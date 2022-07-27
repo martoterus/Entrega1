@@ -1,4 +1,4 @@
-{% extends "Appventas/padre.html" %}
+{% extends "padre.html" %}
 
 {% load static %}
 
@@ -8,14 +8,10 @@
     <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
     <h1>Formulario - Agregar bicicletas</h1>
     
-    {% if miFormulario.errors %}
-
-    <p style="color: red;"> Están mal los datos, revisar</p>
-
-    {% endif %}
 
 
-    <form action="" method="GET">{% csrf_token %}
+
+    <form action="bicicletas" method="POST">{% csrf_token %}
 
         <!-- Acá está la magia de Django-->
         

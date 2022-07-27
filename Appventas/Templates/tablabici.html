@@ -1,0 +1,25 @@
+{% extends 'Padre.html' %}
+
+{% load static %}
+
+{% block bloquecambia %}
+
+<h3>Formulario para bicicletas</h3>
+
+
+<form action="bici/" method="POST">{% csrf_token %}
+
+    <!-- Acá está la magia de Django-->
+    <P>Marca: <input type="text" name="marca"></P>
+    <P>Modelo: <input type="text" name="modelo"></P>
+    <P>Rodado: <input type="number" name="rodado"></P>
+    <P>Color: <input type="text" name="color"></P>
+    <P>Fecha_fabricacion: <input type="date" name="fecha_fabricacion"></P>
+    <P>Precio: <input type="number" name="precio"></P>
+ 
+
+    <input type="submit", value="Enviar">
+
+</form>
+
+{% endblock bloquecambia %}

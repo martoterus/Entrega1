@@ -15,6 +15,11 @@ def inicio(request):
 
     return render(request, "inicio.html")
 
+def tablabici(request):
+
+    return render(request, "tablabici.html")
+
+
 def bicis(request):
 
     if request.method == 'POST':
@@ -31,12 +36,12 @@ def bicis(request):
             
             bici.save()
 
-            return render(request, "Appventas/inicio.html")
+            return render(request, "inicio.html")
 
-        else:
-            miFormulario = bicisformulario()
+    else:
+        miFormulario = bicisformulario()
 
-        return render(request, "Appventas/biciformulario.html", {"miFormulario":miFormulario})
+        return render(request, "tablabici.html", {"miFormulario":miFormulario})
         
 
 def repuesto(request):
