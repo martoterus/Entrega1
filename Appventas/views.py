@@ -1,13 +1,11 @@
 
 # Create your views here.
+from doctest import ELLIPSIS_MARKER
 from django.shortcuts import render
 from django.http import HttpResponse
-from Appventas.models import bicicletas
-from Appventas.forms import bicisformulario
-from Appventas.forms import repuestosFormulario
-from Appventas.models import repuestos
-from Appventas.forms import indumentariaFormularios
-from Appventas.models import indumentaria
+from Appventas.models import bicicletas, repuestos, indumentaria
+from Appventas.forms import bicisformulario, repuestosFormulario, indumentariaFormularios
+
 # Create your views here.
 
 
@@ -18,25 +16,54 @@ def inicio(request):
 def Formulariobicis(request):
 
     if request.method == 'POST':
+        BiciFormulario=bicisformulario(request.POST)
+        print("method:", request.method) #Va  a imprimir por terminal el método que utilizamos. 
+        print("Formulario:",BiciFormulario ) 
 
-        miFormulario = bicisformulario(request.POST)
+        if BiciFormulario.is_valid():
+            print("Entro al 2° if")
+            data=BiciFormulario.cleaned_data
 
-        print(miFormulario)
-
-        if miFormulario.is_valid():
-
-            informacion = miFormulario.cleaned_data
-
-            bici = bicicletas(marca = informacion["marca"], modelo = informacion["modelo"], rodado = informacion["rodado"], color = informacion["color"], fecha_fabricacion = informacion["fecha_fabricacion"], precio = informacion["precio"])
-            
-            bici.save()
-
-            return render(request, "Appventas/inicio.html")
-
+            BICI=bicicletas(marca=data['Marca'],modelo=data['Modelo'],rodado=data['Rodado'],color=data['Color'],fecha_fabricacion=data['Fecha_Fabricacion'],precio=data['Precio'],)
+            BICI.save()
+            return render(request, "inicio.html")
         else:
-            miFormulario = bicisformulario()
+            return render (request,"inicio2.html")
+    else:
+        BiciFormulario=bicisformulario()
+        return render(request,"biciFormulario.html", {"BiciFormulario": BiciFormulario})
+# def Formulariobici(request):
+#     print("method:", request.method) #Va  a imprimir por terminal el método que utilizamos. 
+#     print("method:",request.POST )
+#     if request.method == "POST":
 
-        return render(request, "Appventas/biciformulario.html", {"miFormulario":miFormulario})
+#         formulario=bicicletas(request.POST['Marca'],request.POST['Modelo'],request.POST['Rodado'],request.POST['Color'],request.POST['Fecha_Fabricacion'],request.POST['Precio'],)
+#         formulario.save()
+#         return render(request,"inicio.html")
+#     return render (request,"biciFormulario.html")
+
+# def Formulariobicis(request):
+
+#     if request.method == 'POST':
+
+#         miFormulario = bicisformulario(request.POST)
+
+#         print(miFormulario)
+
+#         if miFormulario.is_valid():
+
+#             informacion = miFormulario.cleaned_data
+
+#             bici = bicicletas(marca = informacion["marca"], modelo = informacion["modelo"], rodado = informacion["rodado"], color = informacion["color"], fecha_fabricacion = informacion["fecha_fabricacion"], precio = informacion["precio"])
+            
+#             bici.save()
+
+#             return render(request, "Appventas/inicio.html")
+
+#     else:
+#         miFormulario = bicisformulario()
+
+#         return render(request, "Appventas/biciformulario.html", {"miFormulario":miFormulario})
         
 
 def repuesto(request):

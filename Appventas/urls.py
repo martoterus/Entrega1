@@ -21,6 +21,7 @@ from Appventas.views import Formulariobicis, inicio
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inicio),
-    path('bicicletas/', Formulariobicis),
+    path('bici_formulario/', Formulariobicis, name="bici_formulario"),
+
 
 ]

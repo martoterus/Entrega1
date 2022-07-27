@@ -1,11 +1,41 @@
-{% extends "Appventas/padre.html" %}
+{% extends "padre.html" %}
 
 {% load static %}
 
 {% block bloquecambia %}
 
+    <h2>Formulario - Agregar bicicletas</h2>
+    {% if miFormulario.errors %}
 
-    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <p style="color: red;"> Están mal los datos, revisar</p>
+
+    {% endif %}
+    <form action="" method="POST">{% csrf_token %}
+        
+        <!--<p> Marca: <input type="text" name="Marca"></p>
+        <p> Modelo : <input type="text" name="Modelo"></p>
+        <p> Rodado : <input type="text" name="Rodado"></p>
+        <p> Color : <input type="text" name="Color"></p>
+        <p> Fecha de fabricacion : <input type="date" name="Fecha_Fabricacion"></p>
+        <p> Precio : <input type ="number"    name="Precio"></p>
+        -->
+    
+        {{ BiciFormulario.as_table}}
+        <br>
+    
+    
+        <input type="submit" value="Enviar">
+
+    </form>
+    
+
+
+
+
+
+
+
+    <!--Aquí va lo que cambia, y lo asociado a está vista :) 
     <h1>Formulario - Agregar bicicletas</h1>
     
     {% if miFormulario.errors %}
@@ -15,9 +45,16 @@
     {% endif %}
 
 
-    <form action="" method="GET">{% csrf_token %}
+-->
 
-        <!-- Acá está la magia de Django-->
+
+
+
+
+<!--
+    <form action="" method="POST">{% csrf_token %}
+
+         Acá está la magia de Django
         
         <table>
 
@@ -29,7 +66,7 @@
 
         <input type="submit", value="Enviar">
 
-    </form>
+    </form>-->
 
   
 
