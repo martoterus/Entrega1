@@ -15,7 +15,7 @@ def inicio(request):
 
     return render(request, "inicio.html")
 
-def bicis(request):
+def Formulariobicis(request):
 
     if request.method == 'POST':
 
