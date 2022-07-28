@@ -6,7 +6,6 @@ class bicisformulario(forms.Form):
     Modelo = forms.CharField()
     Rodado = forms.CharField()
     Color = forms.CharField()
-    Fecha_fabricacion = forms.DateField()
     Precio = forms.IntegerField()
 
 class repuestosFormulario(forms.Form):
