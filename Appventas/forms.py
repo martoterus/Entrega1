@@ -2,12 +2,12 @@ from django import forms
 
 class bicisformulario(forms.Form):
 
-    marca = forms.CharField()
-    modelo = forms.CharField()
-    rodado = forms.CharField()
-    color = forms.CharField()
-    fecha_fabricacion = forms.DateField()
-    precio = forms.IntegerField()
+    Marca = forms.CharField()
+    Modelo = forms.CharField()
+    Rodado = forms.CharField()
+    Color = forms.CharField()
+    Fecha_fabricacion = forms.DateField()
+    Precio = forms.IntegerField()
 
 class repuestosFormulario(forms.Form):
 

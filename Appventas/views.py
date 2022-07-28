@@ -23,9 +23,9 @@ def Formulariobicis(request):
         if BiciFormulario.is_valid():
             print("Entro al 2° if")
             data=BiciFormulario.cleaned_data
-
-            BICI=bicicletas(marca=data['Marca'],modelo=data['Modelo'],rodado=data['Rodado'],color=data['Color'],fecha_fabricacion=data['Fecha_Fabricacion'],precio=data['Precio'],)
-            BICI.save()
+            #En la tabla que creo con la clase le cargo los datos del formulario de Django
+            bici=bicicletas(marca=data['Marca'],modelo=data['Modelo'],rodado=data['Rodado'],color=data['Color'],fecha_fabricacion=['Fecha_Fabricacion'],Precio=data['Precio'],)
+            bici.save()
             return render(request, "inicio.html")
         else:
             return render (request,"inicio2.html")
