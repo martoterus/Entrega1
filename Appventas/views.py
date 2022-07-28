@@ -27,8 +27,8 @@ def Formulariobicis(request):
             bici=bicicletas(marca=data['Marca'],modelo=data['Modelo'],rodado=data['Rodado'],color=data['Color'],precio=data['Precio'],)
             bici.save()
             return render(request, "inicio.html")
-        else:
-            return render (request,"inicio2.html")
+       # else:
+        #    return render (request,"inicio2.html")
     else:
         BiciFormulario=bicisformulario()
         return render(request,"biciFormulario.html", {"BiciFormulario": BiciFormulario})

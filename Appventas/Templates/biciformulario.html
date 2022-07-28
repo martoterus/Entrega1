@@ -5,11 +5,7 @@
 {% block bloquecambia %}
 
     <h2>Formulario - Agregar bicicletas</h2>
-    {% if miFormulario.errors %}
-
-    <p style="color: red;"> Están mal los datos, revisar</p>
-
-    {% endif %}
+    
     <form action="" method="POST">{% csrf_token %}
         
         <!--<p> Marca: <input type="text" name="Marca"></p>
