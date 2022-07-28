@@ -12,6 +12,9 @@ from Appventas.forms import bicisformulario, repuestosFormulario, indumentariaFo
 def inicio(request):
 
     return render(request, "inicio.html")
+def Save(request):
+
+    return render(request, "Save.html")
 
 def Formulariobicis(request):
 
@@ -26,7 +29,7 @@ def Formulariobicis(request):
             #En la tabla que creo con la clase le cargo los datos del formulario de Django
             bici=bicicletas(marca=data['Marca'],modelo=data['Modelo'],rodado=data['Rodado'],color=data['Color'],precio=data['Precio'],)
             bici.save()
-            return render(request, "inicio.html")
+            return render(request, "Save.html")
        # else:
         #    return render (request,"inicio2.html")
     else:
@@ -49,7 +52,7 @@ def Formulariorepuestos(request):
                      #models.py   (como se lee esto?: tipo=data['Tipo'])          
             repuesto=repuestos(tipo=data['Tipo'],marca=data['Marca'],modelo=data['Modelo'],fabricante=data['Fabricante'],precio=data['Precio'],)
             repuesto.save()
-            return render(request, "inicio.html")
+            return render(request, "Save.html")
         else:
             return render (request,"inicio2.html")
     else:
@@ -69,7 +72,7 @@ def Formularioindumentarias(request):
             #En la tabla que creo con la clase le cargo los datos del formulario de Django
             Indu=indumentaria(tipo=data['Tipo'],marca=data['Marca'],modelo=data['Modelo'],talle=data['Talle'],precio=data['Precio'],)
             Indu.save()
-            return render(request, "inicio.html")
+            return render(request, "Save.html")
         else:
             return render (request,"inicio2.html")
     else:
