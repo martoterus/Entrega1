@@ -12,15 +12,16 @@ class bicicletas(models.Model):
 
 
 class repuestos(models.Model):
+    id=models.BigAutoField(primary_key=True)
     tipo = models.CharField(max_length=30)
     marca = models.CharField(max_length=30)
     modelo = models.CharField(max_length=30)
     fabricante = models.CharField(max_length=30)
-    fecha_fabricacion = models.DateField()
     precio = models.IntegerField()
     
 
 class indumentaria(models.Model):
+    id=models.BigAutoField(primary_key=True)
     tipo = models.CharField(max_length=30)
     marca = models.CharField(max_length=30)
     modelo = models.CharField(max_length=30)

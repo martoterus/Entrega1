@@ -24,7 +24,7 @@ def Formulariobicis(request):
             print("Entro al 2° if")
             data=BiciFormulario.cleaned_data
             #En la tabla que creo con la clase le cargo los datos del formulario de Django
-            bici=bicicletas(marca=data['Marca'],modelo=data['Modelo'],rodado=data['Rodado'],color=data['Color'],fecha_fabricacion=['Fecha_Fabricacion'],Precio=data['Precio'],)
+            bici=bicicletas(marca=data['Marca'],modelo=data['Modelo'],rodado=data['Rodado'],color=data['Color'],precio=data['Precio'],)
             bici.save()
             return render(request, "inicio.html")
         else:
@@ -32,90 +32,46 @@ def Formulariobicis(request):
     else:
         BiciFormulario=bicisformulario()
         return render(request,"biciFormulario.html", {"BiciFormulario": BiciFormulario})
-# def Formulariobici(request):
-#     print("method:", request.method) #Va  a imprimir por terminal el método que utilizamos. 
-#     print("method:",request.POST )
-#     if request.method == "POST":
 
-#         formulario=bicicletas(request.POST['Marca'],request.POST['Modelo'],request.POST['Rodado'],request.POST['Color'],request.POST['Fecha_Fabricacion'],request.POST['Precio'],)
-#         formulario.save()
-#         return render(request,"inicio.html")
-#     return render (request,"biciFormulario.html")
 
-# def Formulariobicis(request):
-
-#     if request.method == 'POST':
-
-#         miFormulario = bicisformulario(request.POST)
-
-#         print(miFormulario)
-
-#         if miFormulario.is_valid():
-
-#             informacion = miFormulario.cleaned_data
-
-#             bici = bicicletas(marca = informacion["marca"], modelo = informacion["modelo"], rodado = informacion["rodado"], color = informacion["color"], fecha_fabricacion = informacion["fecha_fabricacion"], precio = informacion["precio"])
-            
-#             bici.save()
-
-#             return render(request, "Appventas/inicio.html")
-
-#     else:
-#         miFormulario = bicisformulario()
-
-#         return render(request, "Appventas/biciformulario.html", {"miFormulario":miFormulario})
-        
-
-def repuesto(request):
+def Formulariorepuestos(request):
 
     if request.method == 'POST':
+                        #forms.py
+        RepuFormulario=repuestosFormulario(request.POST)
+        print("method:", request.method) #Va  a imprimir por terminal el método que utilizamos. 
+        print("Formulario:",RepuFormulario ) 
 
-        miFormulario = repuestosFormulario(request.POST)
-
-        print(miFormulario)
-
-        if miFormulario.is_valid:
-
-            informacion = miFormulario.cleaned_data
-
-            rep = repuestos(tipo = informacion["tipo"], marca = informacion["marca"], modelo = informacion["modelo"], fabricante = informacion["fabricante"], fecha_fabricacion = informacion["fecha_fabricacion"], precio = informacion["precio"])
-            
-            rep.save()
-
-            return render(request, "Appventas/inicio.html")
-
+        if RepuFormulario.is_valid():
+            print("Entro al 2° if")
+            data=RepuFormulario.cleaned_data
+            #En la tabla que creo con la clase (models) le cargo los datos del formulario de Django(forms)
+                     #models.py   (como se lee esto?: tipo=data['Tipo'])          
+            repuesto=repuestos(tipo=data['Tipo'],marca=data['Marca'],modelo=data['Modelo'],fabricante=data['Fabricante'],precio=data['Precio'],)
+            repuesto.save()
+            return render(request, "inicio.html")
         else:
-            miFormulario = repuestosFormulario()
+            return render (request,"inicio2.html")
+    else:
+        RepuFormulario=repuestosFormulario()
+        return render(request,"repuestoFormulario.html", {"RepuestosFormularios":RepuFormulario})        
 
-        return render(request, "Appventas/repuestosformulario.html", {"miFormulario":miFormulario})
-
-
-def indumentarias(request):
+def Formularioindumentarias(request):
 
     if request.method == 'POST':
+        InduFormulario=indumentariaFormularios(request.POST)
+        print("method:", request.method) #Va  a imprimir por terminal el método que utilizamos. 
+        print("Formulario:",InduFormulario ) 
 
-        miFormulario = indumentariaFormularios(request.POST)
-
-        print(miFormulario)
-
-        if miFormulario.is_valid:
-
-            informacion = miFormulario.cleaned_data
-
-            indum = indumentaria(tipo = informacion["tipo"], marca = informacion["marca"], modelo = informacion["modelo"], talle = informacion["talle"], precio = informacion["precio"])
-            
-            indum.save()
-
-            return render(request, "Appventas/inicio.html")
-
+        if InduFormulario.is_valid():
+            print("Entro al 2° if")
+            data=InduFormulario.cleaned_data
+            #En la tabla que creo con la clase le cargo los datos del formulario de Django
+            Indu=indumentaria(tipo=data['Tipo'],marca=data['Marca'],modelo=data['Modelo'],talle=data['Talle'],precio=data['Precio'],)
+            Indu.save()
+            return render(request, "inicio.html")
         else:
-            miFormulario = indumentariaFormularios()
-
-        return render(request, "Appventas/indumentariaformularios.html", {"miFormulario":miFormulario})
-
-#def buscar(request):
-    #if request.method == 'POST':
-
-        #if request.POST['tipo'] == '1':
-
-            #tipo = int(request.POST['tipo'])
+            return render (request,"inicio2.html")
+    else:
+        InduFormulario=indumentariaFormularios()
+        return render(request,"indumentariaFormulario.html", {"IndumentariaFormularios": InduFormulario})
