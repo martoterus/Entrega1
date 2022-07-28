@@ -1,0 +1,22 @@
+
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block bloquecambia %}
+
+
+ <h3>Podes buscar una bicicleta:</h3>
+
+     <form action = "/buscar" method = "GET">{% csrf_token %}
+
+
+         <p>Marca: <input type="text" name="Marca">
+
+         <input type="submit" value="Buscar">
+
+     </form>
+
+{% endblock bloquecambia %}
+
+

@@ -1,0 +1,27 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block bloquecambia %}
+
+
+
+     {% if listabici %}
+
+     <p>Estamos buscando la: {{Marca}}</p>
+
+        <ul>
+
+        {% for i in listabici %}
+
+             <li> {{i.marca}} </li>
+
+             <li> {{i.modelo}} </li>
+
+        {% endfor %}
+
+        </ul>
+
+    {% endif %}
+
+{% endblock bloquecambia %}
